@@ -1,0 +1,10 @@
+duckduckgo-search>=6.2.6
+requests>=2.32.0
+beautifulsoup4>=4.12.3
+lxml>=5.2.2
+newspaper3k>=0.2.8
+nltk>=3.9.1
+tqdm>=4.66.4
+langchain>=0.2.10
+langchain-core>=0.2.26
+langchain-community>=0.2.9
