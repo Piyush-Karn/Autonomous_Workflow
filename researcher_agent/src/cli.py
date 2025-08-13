@@ -1,19 +1,44 @@
-import json
 import argparse
+import json
 from pathlib import Path
-from .orchestrate import research
+from datetime import datetime
+from .agent import run_research
 
 def main():
-    p = argparse.ArgumentParser(description="Researcher Agent")
-    p.add_argument("query", type=str, help="Topic or question to research")
-    p.add_argument("--max_results", type=int, default=8)
-    p.add_argument("--take", type=int, default=6)
-    p.add_argument("--out", type=Path, default=Path("research_output.json"))
-    args = p.parse_args()
+    parser = argparse.ArgumentParser(description="Researcher Agent CLI")
+    parser.add_argument("query", help="Search query or topic")
+    parser.add_argument(
+        "--out",
+        type=Path,
+        help="Output JSON file (default: auto-generated with timestamp)"
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Number of search results to fetch (default: 10)"
+    )
+    parser.add_argument(
+        "--take",
+        type=int,
+        help="Number of articles to process from fetched results (default: same as --limit)"
+    )
+    args = parser.parse_args()
 
-    bundle = research(args.query, args.max_results, args.take)
-    args.out.write_text(json.dumps(bundle.to_dict(), ensure_ascii=False, indent=2))
-    print(f"✅ Saved: {args.out.resolve()}")
+    # Auto-generate filename if not provided
+    if args.out is None:
+        output_dir = Path("output")
+        output_dir.mkdir(exist_ok=True)
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        safe_query = "_".join(args.query.lower().split())[:50]
+        args.out = output_dir / f"research_output_{safe_query}_{timestamp}.json"
+
+    bundle = run_research(args.query, limit=args.limit, take=args.take)
+    args.out.write_text(
+        json.dumps(bundle.to_dict(), ensure_ascii=False, indent=2),
+        encoding="utf-8"
+    )
+    print(f"✅ Saved: {args.out}")
 
 if __name__ == "__main__":
     main()

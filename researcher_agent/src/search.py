@@ -1,4 +1,4 @@
-from duckduckgo_search import DDGS
+from ddgs import DDGS
 from urllib.parse import urlparse
 
 def web_search(query: str, max_results: int = 10):

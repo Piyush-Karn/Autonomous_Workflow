@@ -1,6 +1,6 @@
 from typing import List, Optional, Dict, Any
 from dataclasses import dataclass, asdict
-from datetime import datetime
+from datetime import datetime, timezone
 
 @dataclass
 class Article:
@@ -19,7 +19,7 @@ class Article:
 
     def to_dict(self):
         d = asdict(self)
-        d["retrieved_at"] = datetime.utcnow().isoformat()
+        d["retrieved_at"] = datetime.now(timezone.utc).isoformat()
         return d
 
 @dataclass
