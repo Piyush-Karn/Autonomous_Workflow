@@ -1,0 +1,913 @@
+{
+  "query": "Trends in Education",
+  "articles": [
+    {
+      "title": null,
+      "url": "https://www.oecd.org/en/publications/trends-shaping-education-2025_ee6587fd-en.html",
+      "summary": "",
+      "entities": {},
+      "keywords": []
+    },
+    {
+      "title": null,
+      "url": "https://standtogether.org/stories/education/trends-in-education-to-watch",
+      "summary": "",
+      "entities": {},
+      "keywords": []
+    },
+    {
+      "title": "2025 Higher Education Trends",
+      "url": "https://www.deloitte.com/us/en/insights/industry/public-sector/2025-us-higher-education-trends.html",
+      "summary": "To tackle considerable financial headwinds, institutions need to align their financial resources more tightly with their institutional priorities, fostering greater accountability and ensuring that budgeting decisions support long-term goals and values. Equally important is the communication of the budget across the institution. This focused alignment of the institution’s budget with its strategic plan can facilitate the creation of a new financial model that can be communicated with external audiences—such as philanthropy and policymakers—who can help to alleviate the strain if they are in partnership.",
+      "entities": {
+        "CARDINAL": [
+          "Nearly half"
+        ],
+        "PERSON": [
+          "Bob Brown",
+          "Inside Higher Ed"
+        ],
+        "ORG": [
+          "Boston University"
+        ]
+      },
+      "keywords": [
+        "other.”10",
+        "policymakers—who",
+        "activities",
+        "important",
+        "used—and",
+        "consistent",
+        "institutional",
+        "legibility",
+        "audiences—such",
+        "conducting"
+      ]
+    },
+    {
+      "title": "Top Trends Shaping the Future of Education",
+      "url": "https://online.lsu.edu/newsroom/articles/top-trends-shaping-the-future-of-education/",
+      "summary": "How LSU can prepare you: The online Master of Arts in Educational Technology from LSU equips educators with the skills to design and implement personalized learning experiences using technology and data-driven insights. How LSU can prepare you: The online Master of Arts in Educational Technology from LSU provides the techniques educators need to teach in remote or hybrid learning environments. How LSU can prepare you: Both the online Master of Arts in Education: Higher Education Administration and the online Master of Education in Educational Leadership from LSU provide future leaders with the skills to create inclusive, culturally responsive learning environments that prepare students for global engagement.",
+      "entities": {
+        "ORG": [
+          "STEM",
+          "the Future of Education",
+          "Personalized Learning\nPersonalized",
+          "Curve",
+          "SEL",
+          "LSU",
+          "Master of Education",
+          "Master of Arts",
+          "COVID-19",
+          "Social-Emotional Learning",
+          "AI Literacy\nAI",
+          "Higher Education Administration",
+          "Global Citizenship\nGlobal",
+          "LSU Online & Continuing Education",
+          "STEM Education\nSTEM"
+        ],
+        "DATE": [
+          "a decade ago",
+          "today",
+          "tomorrow"
+        ],
+        "CARDINAL": [
+          "1",
+          "4",
+          "6",
+          "3",
+          "2",
+          "5"
+        ],
+        "GPE": [
+          "AI"
+        ],
+        "PERSON": [
+          "Hybrid Learning",
+          "Stay Ahead"
+        ],
+        "NORP": [
+          "SEL"
+        ]
+      },
+      "keywords": [
+        "problem-solving.",
+        "foundational",
+        "improvement",
+        "consulting,",
+        "interests.",
+        "curriculum",
+        "learning",
+        "continue",
+        "problem-solving,",
+        "responsive"
+      ]
+    },
+    {
+      "title": "What’s Next: Top Five Trends in Education for 2025",
+      "url": "https://ace.edu/blog/whats-next-top-five-trends-in-education-for-2025/",
+      "summary": "Traditionally, individuals with disabilities or specific needs relied on these tools, devices or systems to support learning, working and daily living. Advancements in assistive technology, including the rise of AI, are driving the development of a new wave of assistive tools. More districts will likely embrace outcomes-based contracting.",
+      "entities": {
+        "DATE": [
+          "daily",
+          "The new year",
+          "the new year",
+          "days",
+          "November 2022",
+          "a new year",
+          "the final months of the year",
+          "one day",
+          "2025"
+        ],
+        "GPE": [
+          "AI"
+        ],
+        "CARDINAL": [
+          "five",
+          "1",
+          "4",
+          "3",
+          "three",
+          "one",
+          "2",
+          "5"
+        ],
+        "PRODUCT": [
+          "K-12"
+        ],
+        "ORG": [
+          "CAST",
+          "Universal Design for Learning",
+          "The Center for Applied Special Technology",
+          "American College of Education",
+          "UDL"
+        ],
+        "PERSON": [
+          "Elementary"
+        ]
+      },
+      "keywords": [
+        "interests",
+        "agreement.",
+        "accurate",
+        "outcomes-based",
+        "learning",
+        "smartwatches",
+        "engagement,",
+        "present,",
+        "centers",
+        "simulate"
+      ]
+    },
+    {
+      "title": "10 Trends in Education to Watch in 2025",
+      "url": "https://www.hmhco.com/blog/current-trends-in-education",
+      "summary": "Many of the predictions highlighted here consider the promise of AI. Think AI-powered tools that can turn a dense topic into an easily digestible podcast or AI-powered games that hyper-personalize learning. But we'll have to wait and see if AI's promise can also build stronger teacher-student connections, something HMH CEO Jack Lynch names as a priority going forward.",
+      "entities": {
+        "GPE": [
+          "Teachers",
+          "AI",
+          "America"
+        ],
+        "ORG": [
+          "Classcraft",
+          "HMH"
+        ],
+        "PERSON": [
+          "Kailey Rhodes",
+          "Shawn Young",
+          "Jack Lynch"
+        ],
+        "CARDINAL": [
+          "10"
+        ],
+        "DATE": [
+          "previous years"
+        ]
+      },
+      "keywords": [
+        "strategy,",
+        "solutions.",
+        "teachers",
+        "teacher-student",
+        "coaching,",
+        "innovations",
+        "cofounder",
+        "something",
+        "predictions",
+        "curious"
+      ]
+    },
+    {
+      "title": "Popular Educational Trends and What To Know",
+      "url": "https://www.waterford.org/blog/educational-trends-for-teachers/",
+      "summary": "Others, like genius hour and standards-based grading, are recently arrived educational trends that may have a helpful place in your classroom. When a school curriculum is adaptive to a student’s unique needs, it’s more likely to promote student progress because each child can move at their right pace. If you’re looking for ways to improve student engagement in your classroom, genius spaces may be a trend to keep tabs on.",
+      "entities": {
+        "CARDINAL": [
+          "1",
+          "4",
+          "7",
+          "more than half",
+          "9",
+          "6",
+          "10",
+          "3",
+          "2",
+          "8",
+          "5"
+        ],
+        "DATE": [
+          "this year",
+          "next year",
+          "the school day",
+          "the past few years"
+        ],
+        "PRODUCT": [
+          "F"
+        ],
+        "PERSON": [
+          "STEM",
+          "Personalized Learning",
+          "Trauma-Informed Practices\nTrauma-informed",
+          "Brain Break\nBrain"
+        ],
+        "ORG": [
+          "STEM",
+          "COVID-19",
+          "Digital Citizenship",
+          "Today.com",
+          "Curriculum and Instruction Jenni Torres",
+          "Waterford SVP",
+          "Experiential Learning",
+          "Western Governors University"
+        ],
+        "GPE": [
+          "New Orleans"
+        ],
+        "EVENT": [
+          "Hurricane Katrina"
+        ],
+        "TIME": [
+          "an hour",
+          "ten-minute"
+        ]
+      },
+      "keywords": [
+        "children.[4]",
+        "discussion",
+        "performance.",
+        "arrived",
+        "curriculum",
+        "activities",
+        "refreshed",
+        "account",
+        "learning",
+        "learner"
+      ]
+    },
+    {
+      "title": "How Teachers Can Keep Up with Future Education Trends",
+      "url": "https://acacia.edu/blog/how-teachers-can-keep-up-with-future-education-trends/",
+      "summary": "Online Learning Platforms : Follow a blended learning approach by exploring various online learning platforms to supplement your classroom teaching. : Follow a blended learning approach by exploring various online learning platforms to supplement your classroom teaching. As education continues to evolve, it is fostering a more inclusive and dynamic learning environment that meets the diverse needs of today’s learners.",
+      "entities": {
+        "WORK_OF_ART": [
+          "The Changing Educational Landscape\n"
+        ],
+        "ORDINAL": [
+          "first"
+        ],
+        "GPE": [
+          "AI"
+        ],
+        "ORG": [
+          "Digital",
+          "Student-Centered Learning: Focus",
+          "Game-Based Learning Platform\nLiveBoard",
+          "Activities & Quizzes",
+          "Continuous Professional Development\nContinuous",
+          "Embrace Technology\nTechnology",
+          "Certifications",
+          "Classroom Management Software\n",
+          "Data-Driven Approach",
+          "Digital Literacy"
+        ],
+        "DATE": [
+          "today",
+          "the 21st century"
+        ],
+        "PERSON": [
+          "Staying Informed",
+          "AR App"
+        ]
+      },
+      "keywords": [
+        "mentors",
+        "problem-solving.",
+        "confined",
+        "reputed",
+        "background.",
+        "interests.",
+        "evolve,",
+        "activities",
+        "learning",
+        "different"
+      ]
+    },
+    {
+      "title": "12 Emerging Education Trends (2025 & 2026)",
+      "url": "https://explodingtopics.com/blog/education-trends",
+      "summary": "It’s significantly cheaper to take an online course than it is to enroll in a traditional four-year college. In fact, BestColleges.com’s Online Education Trends Report states that 94% of students who take online courses are satisfied with the experience. One clear example of the online learning trend is the online course platform Udemy.",
+      "entities": {
+        "CARDINAL": [
+          "4",
+          "250",
+          "42",
+          "5x",
+          "75 million",
+          "25.7 million",
+          "2",
+          "11.1 million",
+          "8",
+          "24/7",
+          "7",
+          "More than half",
+          "two",
+          "9",
+          "12",
+          "dozens",
+          "3.0",
+          "more than 77 million",
+          "thousands",
+          "one",
+          "20x",
+          "More than two-thirds",
+          "1,000",
+          "1",
+          "10",
+          "One",
+          "more than 150k",
+          "5",
+          "44",
+          "hundreds",
+          "6",
+          "11",
+          "3",
+          "three"
+        ],
+        "DATE": [
+          "each year",
+          "the last 5 years",
+          "up to five years",
+          "a normal year",
+          "the coming years",
+          "daily",
+          "monthly",
+          "end of the year",
+          "2028",
+          "5 years",
+          "the early days",
+          "2025",
+          "2023",
+          "the 21st century",
+          "early 2022",
+          "the next year",
+          "each month",
+          "this year",
+          "the next two years",
+          "2026",
+          "today",
+          "the past five years",
+          "the last 10 years",
+          "the past 5 years",
+          "2022",
+          "the next five years",
+          "four-year",
+          "last year"
+        ],
+        "ORG": [
+          "Miami University",
+          "The New Mexico Measures of",
+          "MasterClass",
+          "Airbnb",
+          "XR",
+          "DEI",
+          "Stanford University",
+          "Monster’s Future of Work Global Survey",
+          "The State of Teaching and Learning",
+          "Harvard",
+          "Udemy",
+          "LLM",
+          "BestColleges.com’s Online Education Trends Report",
+          "Star Power\nYes,",
+          "Hack The Box",
+          "Worsens\nRand Corporation’s",
+          "The University of Michigan",
+          "AI",
+          "Disney",
+          "Google",
+          "Thinkific",
+          "Mordor Intelligence",
+          "Research and Markets",
+          "Analyze\nMIT",
+          "EDUCAUSE",
+          "The US Department of Education",
+          "Semrush",
+          "Colorado State University",
+          "LinkedIn",
+          "LMS",
+          "H&R Block",
+          "Prenda",
+          "Similar to Thinkific",
+          "GPA",
+          "Niche Education Platforms Take Off",
+          "SAT",
+          "the American Federation of Teachers",
+          "YouTubers",
+          "The University of Wisconsin",
+          "Student Success and Achievement",
+          "EdWeek"
+        ],
+        "GPE": [
+          "Cybrary",
+          "the United States",
+          "Prenda",
+          "Ohio",
+          "US",
+          "Missouri",
+          "Chicago",
+          "Florida",
+          "New Mexico",
+          "AI",
+          "LinkedIn"
+        ],
+        "PERSON": [
+          "Martin Scorsese",
+          "Shake Powered",
+          "MasterClass",
+          "Udemy",
+          "Outschool",
+          "Coursera",
+          "Randi Weingarten",
+          "Murison",
+          "Bob Iger"
+        ],
+        "PERCENT": [
+          "nearly 90%",
+          "190%",
+          "250%",
+          "90%",
+          "54%",
+          "12%",
+          "58%",
+          "Nearly 90%",
+          "94%",
+          "nearly 40%",
+          "856%",
+          "nearly 35%",
+          "50%",
+          "fewer than 30%",
+          "134%",
+          "About 3.4%",
+          "about 8%",
+          "70%",
+          "More than 90%",
+          "23%",
+          "100%"
+        ],
+        "MONEY": [
+          "$1.3 billion",
+          "over $500 million",
+          "at least $10k",
+          "between $13 and $18",
+          "over $400 million",
+          "$319 billion"
+        ],
+        "ORDINAL": [
+          "50th",
+          "first"
+        ],
+        "QUANTITY": [
+          "32+ million"
+        ],
+        "WORK_OF_ART": [
+          "VR",
+          "Outschool",
+          "XR Initiative",
+          "Hack The Box"
+        ],
+        "PRODUCT": [
+          "Campbell’s Law",
+          "Mursion"
+        ],
+        "TIME": [
+          "hourly"
+        ]
+      },
+      "keywords": [
+        "optional",
+        "cybrary.",
+        "substitute",
+        "meteoric.",
+        "however,",
+        "learning",
+        "complete",
+        "important",
+        "companies",
+        "opportunities"
+      ]
+    },
+    {
+      "title": "In 2025, 5 Big Trends Will Shape Education",
+      "url": "https://www.forbes.com/sites/vickiphillips/2025/01/26/in-2025-5-big-trends-will-shape-education/",
+      "summary": "Tapping The Power of Learning Ecosystems The boundaries between formal and informal learning continue to blur, and 2025 is the year to fully embrace learning ecosystems that unite schools, communities, and beyond. Regional alliances, solutions, and strategies can address local challenges while boosting global competitiveness, strengthening economic resilience, and fomenting long-term prosperity. By harnessing the collective energy of schools, communities, and industries, we can create an education system that doesn’t just adapt to change but drives it — building a brighter, more prosperous future for all.",
+      "entities": {
+        "DATE": [
+          "tomorrow",
+          "The year ahead",
+          "Today",
+          "this year",
+          "the year ahead",
+          "the year",
+          "2024",
+          "the school day",
+          "today",
+          "2025",
+          "This year",
+          "several years ago"
+        ],
+        "CARDINAL": [
+          "five",
+          "1",
+          "4",
+          "3",
+          "2",
+          "5"
+        ],
+        "ORG": [
+          "Charting A Brighter Future For Education",
+          "NCEE",
+          "Education",
+          "AI",
+          "The Enough Initiative"
+        ],
+        "GPE": [
+          "Memphis",
+          "Rhode Island",
+          "Ohio",
+          "Columbus",
+          "Tennessee",
+          "Maryland",
+          "AI",
+          "Newport"
+        ],
+        "WORK_OF_ART": [
+          "The Power of Learning Ecosystems"
+        ]
+      },
+      "keywords": [
+        "schools,",
+        "urgency",
+        "learning",
+        "important",
+        "opportunities",
+        "observed",
+        "requires",
+        "island,",
+        "thrive.",
+        "engagement,"
+      ]
+    },
+    {
+      "title": "What Does the Future of Education Look Like? Key Trends",
+      "url": "https://www.ollusa.edu/blog/future-of-education.html",
+      "summary": "Digital tools such as AI, VR, and online platforms are transforming learning and teaching methods. The Role of Technology in the Future of Education Technology is essential in education to create practical and engaging lessons for students. Artificial Intelligence, Virtual Reality, and Augmented reality AI, VR, and AR are transforming education by enabling more captivating and personalized learning experiences.",
+      "entities": {
+        "ORG": [
+          "Learning Management Systems",
+          "The Role of Technology",
+          "LMS",
+          "Augmented Reality (AR",
+          "AR",
+          "the Future of Education\nTechnology",
+          "Artificial Intelligence",
+          "the Lake University",
+          "Education",
+          "the Future of Education\nEducation",
+          "Artificial Intelligence (AI"
+        ],
+        "GPE": [
+          "VR",
+          "AI"
+        ],
+        "DATE": [
+          "tomorrow",
+          "21st-century",
+          "The 21st century",
+          "2020",
+          "today",
+          "2030",
+          "an early age"
+        ],
+        "CARDINAL": [
+          "one"
+        ],
+        "WORK_OF_ART": [
+          "VR"
+        ],
+        "PERSON": [
+          "Smart",
+          "Schools",
+          "AR"
+        ],
+        "PRODUCT": [
+          "Roman"
+        ],
+        "ORDINAL": [
+          "Firstly"
+        ]
+      },
+      "keywords": [
+        "remaining",
+        "learning",
+        "important",
+        "opportunities",
+        "consequently,",
+        "necessary",
+        "methods.",
+        "requires",
+        "machines",
+        "experiences"
+      ]
+    },
+    {
+      "title": "Current Trends in Education",
+      "url": "https://www.eschoolnews.com/it-leadership/2023/12/11/current-trends-in-education/",
+      "summary": "From personalized learning and technology integration to a focus on social-emotional well-being, these trends reflect a commitment to preparing students for the challenges of the 21st century. What are the trends in education in 2024? Integration of Edtech Tools: The increased use of educational technology tools and platforms to facilitate online learning, collaboration, and communication.",
+      "entities": {
+        "PRODUCT": [
+          "K-12"
+        ],
+        "DATE": [
+          "21st century",
+          "2024",
+          "recent years",
+          "an early age",
+          "the 21st century"
+        ],
+        "ORG": [
+          "Focus on Social-Emotional Learning",
+          "SEL",
+          "the Clayton Christensen Institute",
+          "Educational Conferences and Events",
+          "Flexible Instructional Models: Schools",
+          "COVID-19",
+          "Competency-Based",
+          "Global Competency",
+          "Science, Technology, Engineering",
+          "Google Workspace for Education",
+          "Adaptive Learning",
+          "Education Technology Platforms",
+          "Data-Driven Education",
+          "Computational Thinking Integration:",
+          "Education Research",
+          "Social-Emotional Learning",
+          "RAND Corporation",
+          "Digital Literacy and Technology Integration: Integration",
+          "STEM",
+          "PBL",
+          "Data Analytics for Personalized Learning: Data",
+          "Education Publications",
+          "Micro-Credentials for Student Achievement: Introducing",
+          "Arts",
+          "Global Collaborative Initiatives",
+          "AI-Powered Personalized Learning Platforms: Leveraging AI",
+          "Personalized Learning Pathways",
+          "LinkedIn",
+          "the Brookings Institution",
+          "Project-Based Learning",
+          "Innovative K-12",
+          "Learning Analytics:",
+          "Student-Led Conferences: Shifting"
+        ],
+        "NORP": [
+          "SEL"
+        ],
+        "WORK_OF_ART": [
+          "Flexible Learning Environments: Adoption"
+        ],
+        "TIME": [
+          "hours"
+        ],
+        "CARDINAL": [
+          "five",
+          "5",
+          "one"
+        ],
+        "GPE": [
+          "Kahoot",
+          "Edtech"
+        ],
+        "PERSON": [
+          "Scratch",
+          "Schools",
+          "Curricula",
+          "Blended Learning"
+        ]
+      },
+      "keywords": [
+        "evolve,",
+        "styles.",
+        "learning",
+        "important",
+        "methods.",
+        "pedagogical",
+        "create,",
+        "discussing",
+        "engagement,",
+        "experiences"
+      ]
+    },
+    {
+      "title": "Tracing global trends in education: a tale of old and new gender gaps",
+      "url": "https://datatopics.worldbank.org/world-development-indicators/stories/tracing-global-trends-in-education.html",
+      "summary": "In some countries, there are large gender gaps at the primary level with many more primary-school-age girls not enrolled in school than boys, for example in Afghanistan, Niger, and the Central African Republic. While gender disparity at the global level has disappeared for enrollment rates at the primary and secondary level, more needs to be done to improve school completion among girls, and to improve learning outcomes among boys. There are also new gender gaps on the horizon related to digital literacy (UNESCO 2020).",
+      "entities": {
+        "DATE": [
+          "2021",
+          "2022",
+          "2012",
+          "2017",
+          "18 years old",
+          "age 10",
+          "2024",
+          "the 1980s",
+          "several years",
+          "today",
+          "the last 50 years",
+          "2014",
+          "the next couple of years",
+          "2020",
+          "Between 10 to 30 percent",
+          "between the ages of 6",
+          "2030"
+        ],
+        "ORG": [
+          "STEM",
+          "UNESCO 2022",
+          "World Bank 2022",
+          "Brixi et al 2023",
+          "Sub-Saharan Africa",
+          "Welmond",
+          "UNESCO 2020",
+          "COVID-19",
+          "UNESCO 2018",
+          "â",
+          "UNESCO",
+          "Learning Poverty",
+          "UN Women 2023",
+          "Devereux"
+        ],
+        "CARDINAL": [
+          "4",
+          "2023",
+          "more than two-thirds",
+          "614 million",
+          "More than half",
+          "3.7",
+          "18",
+          "244 million",
+          "over 100",
+          "more than 5",
+          "2.5",
+          "An estimated 640 million",
+          "20"
+        ],
+        "ORDINAL": [
+          "secondary",
+          "tertiary"
+        ],
+        "PERCENT": [
+          "50 percent",
+          "around 71 percent",
+          "20 percent",
+          "about 66 percent",
+          "less than 50 percent",
+          "fewer than 1 percent",
+          "43 percent",
+          "only 38 percent"
+        ],
+        "GPE": [
+          "Papua New Guinea",
+          "Pakistan",
+          "Haiti",
+          "Afghanistan",
+          "Mauritania",
+          "Madagascar",
+          "Belize",
+          "Zambia"
+        ],
+        "PERSON": [
+          "Saavedra et al 2022",
+          "masculinityâ",
+          "Niger"
+        ],
+        "LOC": [
+          "the Central African Republic"
+        ],
+        "LAW": [
+          "Hammond et al 2020",
+          "Delaney"
+        ]
+      },
+      "keywords": [
+        "quality",
+        "fragile",
+        "countries.",
+        "though,",
+        "graduating",
+        "activities",
+        "primary-school-age",
+        "(unesco",
+        "however,",
+        "available,"
+      ]
+    },
+    {
+      "title": null,
+      "url": "https://business.comcast.com/community/browse-all/details/5-trends-impacting-the-education-sector",
+      "summary": "",
+      "entities": {},
+      "keywords": []
+    },
+    {
+      "title": "2024 Trends in Education",
+      "url": "https://www.carnegielearning.com/blog/2024-trends-in-education",
+      "summary": "Or not. In 2024, expect to be asked about the role of experiential learning in your instruction. Microlearning The term may be new to you, but it's just a rebrand of something you already do.",
+      "entities": {
+        "DATE": [
+          "Recent years",
+          "May 1, 2024",
+          "Almost two years ago",
+          "January 5, 2024",
+          "this year",
+          "2day",
+          "2024",
+          "Early 2023",
+          "decades",
+          "a year and a half"
+        ],
+        "ORDINAL": [
+          "first",
+          "second"
+        ],
+        "ORG": [
+          "STEM",
+          "Soft Skills Development",
+          "EdTech",
+          "Carnegie Learning"
+        ],
+        "GPE": [
+          "AI"
+        ],
+        "PERSON": [
+          "Experiential Learning",
+          "Jamie Sterling"
+        ],
+        "LOC": [
+          "LiveHint AI"
+        ],
+        "CARDINAL": [
+          "One",
+          "1,033"
+        ],
+        "PERCENT": [
+          "50%"
+        ],
+        "WORK_OF_ART": [
+          "Kahoot"
+        ],
+        "TIME": [
+          "3-5 minutes"
+        ],
+        "PRODUCT": [
+          "K-12"
+        ],
+        "NORP": [
+          "SEL"
+        ]
+      },
+      "keywords": [
+        "though,",
+        "confines",
+        "curriculum",
+        "definitely",
+        "learning",
+        "continue",
+        "anymore?",
+        "problem-solving,",
+        "top-down",
+        "bristle"
+      ]
+    }
+  ]
+}
