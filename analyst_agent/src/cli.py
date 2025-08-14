@@ -2,20 +2,22 @@
 import argparse
 import json
 import logging
+from .analyze import _json_safe 
 from pathlib import Path
 from datetime import datetime
 
 from .analyze import analyze_research_file
 
-# Setup logging once
-logging.basicConfig(
-    format="%(levelname)s: %(message)s",
-    level=logging.INFO
-)
+# Set up logging
+logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.INFO)
 
 def main():
     parser = argparse.ArgumentParser(description="Run Analyst Agent on a research JSON file")
-    parser.add_argument("input", type=Path, help="Research JSON file from Researcher Agent")
+    parser.add_argument(
+        "input",
+        type=Path,
+        help="Path to research JSON file from Researcher Agent"
+    )
     parser.add_argument(
         "--out",
         type=Path,
@@ -27,8 +29,8 @@ def main():
         default="rake",
         help="Keyword extraction method to use (default: rake)"
     )
-    args = parser.parse_args()
 
+    args = parser.parse_args()
     logging.info("📂 Loading research file...")
 
     if not args.input.exists() or not args.input.is_file():
@@ -43,17 +45,16 @@ def main():
         output_dir.mkdir(exist_ok=True)
         out_path = output_dir / f"analysis_output_{timestamp}.json"
     elif args.out.is_dir() or not args.out.suffix:
-        # If output is directory or no extension, treat as folder
+        # Directory or no extension - treat as folder
         args.out.mkdir(parents=True, exist_ok=True)
         out_path = args.out / f"analysis_output_{timestamp}.json"
     else:
-        # File path given — insert timestamp before extension
+        # File path given — append timestamp before extension
         args.out.parent.mkdir(parents=True, exist_ok=True)
-        stem = args.out.stem
-        suffix = args.out.suffix
+        stem, suffix = args.out.stem, args.out.suffix
         out_path = args.out.with_name(f"{stem}_{timestamp}{suffix}")
 
-    logging.info(f"🧠 Extracting keywords and entities using '{args.keywords}' method...")
+    logging.info(f"🧠 Analyzing with '{args.keywords}' keyword method...")
     try:
         bundle = analyze_research_file(args.input, keyword_method=args.keywords)
     except Exception as e:
@@ -62,6 +63,8 @@ def main():
 
     logging.info("💾 Saving analysis...")
     try:
+        
+        safe_bundle = _json_safe(bundle.to_dict())
         out_path.write_text(
             json.dumps(bundle.to_dict(), ensure_ascii=False, indent=2),
             encoding="utf-8"
@@ -74,3 +77,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
