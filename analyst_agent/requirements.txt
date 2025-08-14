@@ -2,3 +2,4 @@ spacy>=3.7.0
 nltk>=3.8.1
 gensim>=4.3.2
 sumy>=0.11.0
+rake-nltk
