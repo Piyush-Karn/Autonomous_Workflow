@@ -7,11 +7,12 @@ class Article:
     title: Optional[str]
     url: str
     authors: List[str]
-    published: Optional[str]
+    published: Optional[str]          # standardized date string
     top_image: Optional[str]
     summary: Optional[str]
     text: str
     source: Optional[str]
+    source_type: Optional[str]        # NEW FIELD
     word_count: int
     status: str
     error: Optional[str] = None
