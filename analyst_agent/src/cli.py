@@ -1,49 +1,76 @@
+# cli.py
 import argparse
 import json
+import logging
 from pathlib import Path
 from datetime import datetime
+
 from .analyze import analyze_research_file
 
+# Setup logging once
+logging.basicConfig(
+    format="%(levelname)s: %(message)s",
+    level=logging.INFO
+)
+
 def main():
-    parser = argparse.ArgumentParser(description="Analyst Agent CLI")
+    parser = argparse.ArgumentParser(description="Run Analyst Agent on a research JSON file")
     parser.add_argument("input", type=Path, help="Research JSON file from Researcher Agent")
-    parser.add_argument("--out", type=Path, help="Output file or folder for analysis JSON")
+    parser.add_argument(
+        "--out",
+        type=Path,
+        help="Output file or folder for analysis JSON (default: ./output/...)"
+    )
+    parser.add_argument(
+        "--keywords",
+        choices=["rake", "yake"],
+        default="rake",
+        help="Keyword extraction method to use (default: rake)"
+    )
     args = parser.parse_args()
 
-    print("📂 Loading research file...")
-    if not args.input.exists():
-        print(f"❌ Input file not found: {args.input}")
+    logging.info("📂 Loading research file...")
+
+    if not args.input.exists() or not args.input.is_file():
+        logging.error(f"❌ Input file not found or not a file: {args.input}")
         return
 
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
+    # Determine output path
     if args.out is None:
-        # Default behavior: create output folder & timestamped file
         output_dir = Path("output")
         output_dir.mkdir(exist_ok=True)
-        args.out = output_dir / f"analysis_output_{timestamp}.json"
+        out_path = output_dir / f"analysis_output_{timestamp}.json"
+    elif args.out.is_dir() or not args.out.suffix:
+        # If output is directory or no extension, treat as folder
+        args.out.mkdir(parents=True, exist_ok=True)
+        out_path = args.out / f"analysis_output_{timestamp}.json"
     else:
-        # If output is a directory → save inside it with timestamp
-        if args.out.is_dir() or not args.out.suffix:
-            args.out.mkdir(parents=True, exist_ok=True)
-            args.out = args.out / f"analysis_output_{timestamp}.json"
-        else:
-            # If output is a file path, insert timestamp before extension
-            args.out.parent.mkdir(parents=True, exist_ok=True)
-            stem = args.out.stem
-            suffix = args.out.suffix
-            args.out = args.out.with_name(f"{stem}_{timestamp}{suffix}")
+        # File path given — insert timestamp before extension
+        args.out.parent.mkdir(parents=True, exist_ok=True)
+        stem = args.out.stem
+        suffix = args.out.suffix
+        out_path = args.out.with_name(f"{stem}_{timestamp}{suffix}")
 
-    print("🧠 Extracting keywords and entities...")
-    bundle = analyze_research_file(args.input)
+    logging.info(f"🧠 Extracting keywords and entities using '{args.keywords}' method...")
+    try:
+        bundle = analyze_research_file(args.input, keyword_method=args.keywords)
+    except Exception as e:
+        logging.exception(f"❌ Analysis failed: {e}")
+        return
 
-    print("💾 Saving analysis...")
-    args.out.write_text(
-        json.dumps(bundle.to_dict(), ensure_ascii=False, indent=2),
-        encoding="utf-8"
-    )
+    logging.info("💾 Saving analysis...")
+    try:
+        out_path.write_text(
+            json.dumps(bundle.to_dict(), ensure_ascii=False, indent=2),
+            encoding="utf-8"
+        )
+    except Exception as e:
+        logging.exception(f"❌ Failed to save analysis to {out_path}: {e}")
+        return
 
-    print(f"✅ Analysis saved: {args.out}")
+    logging.info(f"✅ Analysis saved: {out_path}")
 
 if __name__ == "__main__":
     main()

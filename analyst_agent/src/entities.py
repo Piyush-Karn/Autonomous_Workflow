@@ -1,47 +1,57 @@
 # entities.py
-import re
 import spacy
+import re
 from collections import defaultdict
+from .normalizer import normalize_text
 
-# Load spaCy model only once
-nlp = spacy.load("en_core_web_sm")
+# Single shared spaCy model
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    raise RuntimeError("SpaCy English model not installed. Run: python -m spacy download en_core_web_sm")
 
-# Allowed characters pattern:
-# - Letters (unicode word chars), spaces
-# - Hyphen, apostrophe, period, comma, ampersand, slash (common in org names)
 _ALLOWED_PATTERN = re.compile(r"^[\w\s\-\.'&/,]+$", re.UNICODE)
 
+# Optional alias mapping for normalization (can expand over time)
+ALIASES = {
+    "u.s.": "United States",
+    "usa": "United States",
+    "covid": "COVID-19"
+}
+
+
 def _is_clean_entity(text: str) -> bool:
-    """
-    Filter out entities that:
-    - contain any digits, OR
-    - contain characters outside a conservative allowed set.
-    """
-    if not text or not text.strip():
+    """Filters out entities with digits or disallowed punctuation."""
+    if not text:
         return False
-    s = text.strip()
-    # No digits
-    if any(ch.isdigit() for ch in s):
+    t = text.strip()
+    if any(ch.isdigit() for ch in t):
         return False
-    # Must match allowed characters
-    if not _ALLOWED_PATTERN.match(s):
+    if not _ALLOWED_PATTERN.match(t):
         return False
     return True
 
+
+def _alias_map(text: str) -> str:
+    lower_t = text.lower()
+    return ALIASES.get(lower_t, text)
+
+
 def extract_entities(text: str):
-    """Extract named entities from text using spaCy, then clean/dedup/sort."""
+    """
+    Run spaCy NER, clean, dedup, normalize, alias-map, and sort.
+    """
     if not text:
         return {}
 
     doc = nlp(text)
-    entities = defaultdict(set)  # use set to dedupe per label
+    entities = defaultdict(set)
 
     for ent in doc.ents:
-        ent_text = ent.text.strip()
-        if _is_clean_entity(ent_text):
-            # Normalize internal whitespace
-            norm = re.sub(r"\s+", " ", ent_text)
-            entities[ent.label_].add(norm)
+        if not _is_clean_entity(ent.text):
+            continue
+        norm_text = normalize_text(ent.text)
+        norm_text = _alias_map(norm_text)
+        entities[ent.label_].add(norm_text)
 
-    # Convert to sorted lists alphabetically
-    return {label: sorted(list(vals), key=lambda x: x.lower()) for label, vals in entities.items()}
+    return {label: sorted(vals, key=lambda x: x.lower()) for label, vals in entities.items()}
