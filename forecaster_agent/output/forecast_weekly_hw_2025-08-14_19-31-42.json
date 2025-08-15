@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "model": "holtwinters",
+    "horizon": 12,
+    "frequency": "weekly",
+    "generated_at": "2025-08-14T14-01-50Z",
+    "series_count": 1,
+    "skipped_series": []
+  },
+  "forecasts": [
+    {
+      "series": "article_count",
+      "confidence": "low",
+      "forecasts": [
+        {
+          "date": "2025-08-24",
+          "prediction": 2.3105748674444064
+        },
+        {
+          "date": "2025-08-31",
+          "prediction": 2.4078135551424844
+        },
+        {
+          "date": "2025-09-07",
+          "prediction": 2.504760654577709
+        },
+        {
+          "date": "2025-09-14",
+          "prediction": 2.601416636843655
+        },
+        {
+          "date": "2025-09-21",
+          "prediction": 2.6977816279986246
+        },
+        {
+          "date": "2025-09-28",
+          "prediction": 2.7938556017783505
+        },
+        {
+          "date": "2025-10-05",
+          "prediction": 2.8896388463583076
+        },
+        {
+          "date": "2025-10-12",
+          "prediction": 2.985131230774111
+        },
+        {
+          "date": "2025-10-19",
+          "prediction": 3.0803327420906212
+        },
+        {
+          "date": "2025-10-26",
+          "prediction": 3.17524342516828
+        },
+        {
+          "date": "2025-11-02",
+          "prediction": 3.269863264959721
+        },
+        {
+          "date": "2025-11-09",
+          "prediction": 3.364192254566427
+        }
+      ]
+    }
+  ],
+  "cv_metrics": {
+    "smape": 197.99016087669952,
+    "rmse": 0.16958278850065456
+  },
+  "top_features": []
+}

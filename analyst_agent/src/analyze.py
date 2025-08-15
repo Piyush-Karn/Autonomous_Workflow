@@ -112,6 +112,12 @@ def analyze_research_file(file_path: Path, keyword_method: str = "rake"):
 
         keyword_extractor = extract_keywords_yake if keyword_method == "yake" else extract_keywords_rake
         keywords = clean_keywords(keyword_extractor(text, top_k=10))  # cleaned keywords
+        # Promote frequent ORG/PRODUCT entities to keyword list
+        for label in ("ORG", "PRODUCT"):
+            for ent in entities.get(label, []):
+                term = normalize_text(ent)
+                if term and term.lower() not in keywords:
+                    keywords.append(term.lower())
 
         # Sentiment
         sentiment_score, sentiment_label = get_sentiment(text)

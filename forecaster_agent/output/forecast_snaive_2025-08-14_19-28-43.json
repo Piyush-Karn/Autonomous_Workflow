@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "model": "snaive",
+    "horizon": 14,
+    "frequency": "daily",
+    "generated_at": "2025-08-14T13-58-43Z",
+    "series_count": 1,
+    "skipped_series": []
+  },
+  "forecasts": [
+    {
+      "series": "article_count",
+      "confidence": "high",
+      "forecasts": [
+        {
+          "date": "2025-08-15",
+          "prediction": 2.0
+        },
+        {
+          "date": "2025-08-16",
+          "prediction": 0.0
+        },
+        {
+          "date": "2025-08-17",
+          "prediction": 0.0
+        },
+        {
+          "date": "2025-08-18",
+          "prediction": 0.0
+        },
+        {
+          "date": "2025-08-19",
+          "prediction": 0.0
+        },
+        {
+          "date": "2025-08-20",
+          "prediction": 0.0
+        },
+        {
+          "date": "2025-08-21",
+          "prediction": 4.0
+        },
+        {
+          "date": "2025-08-22",
+          "prediction": 2.0
+        },
+        {
+          "date": "2025-08-23",
+          "prediction": 0.0
+        },
+        {
+          "date": "2025-08-24",
+          "prediction": 0.0
+        },
+        {
+          "date": "2025-08-25",
+          "prediction": 0.0
+        },
+        {
+          "date": "2025-08-26",
+          "prediction": 0.0
+        },
+        {
+          "date": "2025-08-27",
+          "prediction": 0.0
+        },
+        {
+          "date": "2025-08-28",
+          "prediction": 4.0
+        }
+      ]
+    }
+  ],
+  "cv_metrics": {
+    "smape": 3.7676609105180536,
+    "rmse": 0.04889824605158072
+  },
+  "top_features": []
+}
