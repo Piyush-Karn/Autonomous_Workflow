@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Electric Scooter — Forecast & Trend Analysis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22d3ee;
+      --good: #34d399;
+      --warn: #f59e0b;
+      --bad: #f87171;
+      --border: #1f2937;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 24px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text); background: linear-gradient(180deg, #0b1022, #0f172a);
+    }
+    .container { max-width: 980px; margin: 0 auto; }
+    header {
+      padding: 20px 24px; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,0.02);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    .title {
+      font-size: 26px; font-weight: 700; letter-spacing: 0.2px; margin: 0 0 6px 0;
+      background: linear-gradient(90deg, #60a5fa, #22d3ee, #34d399);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .meta { font-size: 13px; color: var(--muted); display: flex; gap: 18px; flex-wrap: wrap; }
+    section {
+      margin-top: 18px; padding: 20px 24px; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,0.02);
+    }
+    h2 { font-size: 18px; margin: 0 0 12px 0; }
+    h3 { font-size: 15px; margin: 16px 0 6px 0; color: var(--accent); }
+    p, li { line-height: 1.5; font-size: 14px; color: var(--text); }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .kv { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+    .badge { padding: 2px 8px; border-radius: 999px; font-size: 12px; border: 1px solid var(--border); color: var(--muted); }
+    .badge.good { color: var(--good); border-color: rgba(52,211,153,0.5); }
+    .badge.warn { color: var(--warn); border-color: rgba(245,158,11,0.5); }
+    .badge.bad  { color: var(--bad); border-color: rgba(248,113,113,0.5); }
+    ul.flat { list-style: none; padding: 0; margin: 0; }
+    ul.flat > li { padding: 6px 0; border-bottom: 1px dashed var(--border); }
+    ul.flat > li:last-child { border-bottom: none; }
+    .muted { color: var(--muted); }
+    .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+    footer { margin: 24px 0 8px; text-align: center; color: var(--muted); font-size: 12px; }
+    @media print {
+      body { background: #fff; color: #000; }
+      header, section { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title">Electric Scooter — Forecast & Trend Analysis</div>
+      <div class="meta">
+        <div>Generated: <span class="code">2025-08-15 11:14</span></div>
+        <div>Weekly Horizon: <span class="code">12</span></div>
+        <div>Daily Horizon: <span class="code">14</span></div>
+      </div>
+    </header>
+
+    
+    <section>
+      <h2>Executive Summary</h2>
+      <ul class="flat">
+        
+        <li>Weekly trend: <strong>Upward</strong> from ~2.31 to ~3.36 over 12 weeks
+          <span class="badge bad">
+            Confidence: low
+          </span>
+        </li>
+        
+        
+        <li>Daily pattern: repeating values [0.0, 2.0, 4.0] over 14 days
+          <span class="badge good">
+            Confidence: high
+          </span>
+        </li>
+        
+      </ul>
+    </section>
+    
+
+    
+    <section>
+      <h2>Overall Trend (Weekly)</h2>
+      <div class="grid">
+        <div class="kv">
+          <span class="badge">Model: holtwinters</span>
+          <span class="badge bad">
+            Confidence: low
+          </span>
+        </div>
+        <p class="muted">Weekly forecast for article_count:</p>
+        <ul class="flat">
+          
+          <li><span class="code">2025-08-24</span> → 2.31</li>
+          
+          <li><span class="code">2025-08-31</span> → 2.41</li>
+          
+          <li><span class="code">2025-09-07</span> → 2.50</li>
+          
+          <li><span class="code">2025-09-14</span> → 2.60</li>
+          
+          <li><span class="code">2025-09-21</span> → 2.70</li>
+          
+          <li><span class="code">2025-09-28</span> → 2.79</li>
+          
+          <li><span class="code">2025-10-05</span> → 2.89</li>
+          
+          <li><span class="code">2025-10-12</span> → 2.99</li>
+          
+          <li><span class="code">2025-10-19</span> → 3.08</li>
+          
+          <li><span class="code">2025-10-26</span> → 3.18</li>
+          
+          <li><span class="code">2025-11-02</span> → 3.27</li>
+          
+          <li><span class="code">2025-11-09</span> → 3.36</li>
+          
+        </ul>
+      </div>
+    </section>
+    
+
+    
+    <section>
+      <h2>Short‑Term Pattern (Daily)</h2>
+      <div class="grid">
+        <div class="kv">
+          <span class="badge">Model: snaive</span>
+          <span class="badge good">
+            Confidence: high
+          </span>
+        </div>
+        <p class="muted">Daily forecast for article_count:</p>
+        <ul class="flat">
+          
+          <li><span class="code">2025-08-15</span> → 2.00</li>
+          
+          <li><span class="code">2025-08-16</span> → 0.00</li>
+          
+          <li><span class="code">2025-08-17</span> → 0.00</li>
+          
+          <li><span class="code">2025-08-18</span> → 0.00</li>
+          
+          <li><span class="code">2025-08-19</span> → 0.00</li>
+          
+          <li><span class="code">2025-08-20</span> → 0.00</li>
+          
+          <li><span class="code">2025-08-21</span> → 4.00</li>
+          
+          <li><span class="code">2025-08-22</span> → 2.00</li>
+          
+          <li><span class="code">2025-08-23</span> → 0.00</li>
+          
+          <li><span class="code">2025-08-24</span> → 0.00</li>
+          
+          <li><span class="code">2025-08-25</span> → 0.00</li>
+          
+          <li><span class="code">2025-08-26</span> → 0.00</li>
+          
+          <li><span class="code">2025-08-27</span> → 0.00</li>
+          
+          <li><span class="code">2025-08-28</span> → 4.00</li>
+          
+        </ul>
+      </div>
+    </section>
+    
+
+    
+
+    <section>
+      <h2>Methodology & Notes</h2>
+      <ul>
+        <li>Forecasts provided by Forecaster Agent (weekly trend and daily pattern).</li>
+        <li>Confidence levels are derived from backtesting metrics and model choice.</li>
+        <li>Keyword/theme series may be omitted when historical occurrence is too sparse.</li>
+      </ul>
+    </section>
+
+    <footer>
+      Report generated by Writer Agent — topic‑agnostic (works for markets, trends, incidents).
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ data.topic }} — Forecast & Trend Analysis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22d3ee;
+      --good: #34d399;
+      --warn: #f59e0b;
+      --bad: #f87171;
+      --border: #1f2937;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 24px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text); background: linear-gradient(180deg, #0b1022, #0f172a);
+    }
+    .container { max-width: 980px; margin: 0 auto; }
+    header {
+      padding: 20px 24px; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,0.02);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    .title {
+      font-size: 26px; font-weight: 700; letter-spacing: 0.2px; margin: 0 0 6px 0;
+      background: linear-gradient(90deg, #60a5fa, #22d3ee, #34d399);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .meta { font-size: 13px; color: var(--muted); display: flex; gap: 18px; flex-wrap: wrap; }
+    section {
+      margin-top: 18px; padding: 20px 24px; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,0.02);
+    }
+    h2 { font-size: 18px; margin: 0 0 12px 0; }
+    h3 { font-size: 15px; margin: 16px 0 6px 0; color: var(--accent); }
+    p, li { line-height: 1.5; font-size: 14px; color: var(--text); }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .kv { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+    .badge { padding: 2px 8px; border-radius: 999px; font-size: 12px; border: 1px solid var(--border); color: var(--muted); }
+    .badge.good { color: var(--good); border-color: rgba(52,211,153,0.5); }
+    .badge.warn { color: var(--warn); border-color: rgba(245,158,11,0.5); }
+    .badge.bad  { color: var(--bad); border-color: rgba(248,113,113,0.5); }
+    ul.flat { list-style: none; padding: 0; margin: 0; }
+    ul.flat > li { padding: 6px 0; border-bottom: 1px dashed var(--border); }
+    ul.flat > li:last-child { border-bottom: none; }
+    .muted { color: var(--muted); }
+    .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+    footer { margin: 24px 0 8px; text-align: center; color: var(--muted); font-size: 12px; }
+    @media print {
+      body { background: #fff; color: #000; }
+      header, section { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title">{{ data.topic }} — Forecast & Trend Analysis</div>
+      <div class="meta">
+        <div>Generated: <span class="code">{{ data.generated_at }}</span></div>
+        {% if data.weekly %}<div>Weekly Horizon: <span class="code">{{ data.weekly.meta.horizon }}</span></div>{% endif %}
+        {% if data.daily %}<div>Daily Horizon: <span class="code">{{ data.daily.meta.horizon }}</span></div>{% endif %}
+      </div>
+    </header>
+
+    {% if data.summary.weekly or data.summary.daily %}
+    <section>
+      <h2>Executive Summary</h2>
+      <ul class="flat">
+        {% if data.summary.weekly %}
+        <li>Weekly trend: <strong>{{ data.summary.weekly.direction|capitalize }}</strong> from ~{{ data.summary.weekly.start }} to ~{{ data.summary.weekly.end }} over {{ data.summary.weekly.horizon }} weeks
+          <span class="badge {% if data.summary.weekly.confidence == 'high' %}good{% elif data.summary.weekly.confidence == 'medium' %}warn{% else %}bad{% endif %}">
+            Confidence: {{ data.summary.weekly.confidence }}
+          </span>
+        </li>
+        {% endif %}
+        {% if data.summary.daily %}
+        <li>Daily pattern: {{ "repeating values " ~ data.summary.daily.unique_values if data.summary.daily.unique_values else "short-term seasonal pattern" }} over {{ data.summary.daily.horizon }} days
+          <span class="badge {% if data.summary.daily.confidence == 'high' %}good{% elif data.summary.daily.confidence == 'medium' %}warn{% else %}bad{% endif %}">
+            Confidence: {{ data.summary.daily.confidence }}
+          </span>
+        </li>
+        {% endif %}
+      </ul>
+    </section>
+    {% endif %}
+
+    {% if data.weekly %}
+    <section>
+      <h2>Overall Trend (Weekly)</h2>
+      <div class="grid">
+        <div class="kv">
+          <span class="badge">Model: {{ data.weekly.meta.model }}</span>
+          <span class="badge {% if data.weekly.main_series.confidence == 'high' %}good{% elif data.weekly.main_series.confidence == 'medium' %}warn{% else %}bad{% endif %}">
+            Confidence: {{ data.weekly.main_series.confidence or 'N/A' }}
+          </span>
+        </div>
+        <p class="muted">Weekly forecast for article_count:</p>
+        <ul class="flat">
+          {% for point in data.weekly.main_series.forecasts %}
+          <li><span class="code">{{ point.date }}</span> → {{ "%.2f"|format(point.prediction) }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if data.daily %}
+    <section>
+      <h2>Short‑Term Pattern (Daily)</h2>
+      <div class="grid">
+        <div class="kv">
+          <span class="badge">Model: {{ data.daily.meta.model }}</span>
+          <span class="badge {% if data.daily.main_series.confidence == 'high' %}good{% elif data.daily.main_series.confidence == 'medium' %}warn{% else %}bad{% endif %}">
+            Confidence: {{ data.daily.main_series.confidence or 'N/A' }}
+          </span>
+        </div>
+        <p class="muted">Daily forecast for article_count:</p>
+        <ul class="flat">
+          {% for point in data.daily.main_series.forecasts %}
+          <li><span class="code">{{ point.date }}</span> → {{ "%.2f"|format(point.prediction) }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if data.weekly and data.weekly.keyword_series %}
+    <section>
+      <h2>Top Themes & Keywords</h2>
+      {% for series in data.weekly.keyword_series %}
+      <h3>{{ series.series }} <span class="badge {% if series.confidence == 'high' %}good{% elif series.confidence == 'medium' %}warn{% else %}bad{% endif %}">Confidence: {{ series.confidence or 'N/A' }}</span></h3>
+      <ul class="flat">
+        {% for point in series.forecasts %}
+        <li><span class="code">{{ point.date }}</span> → {{ "%.2f"|format(point.prediction) }}</li>
+        {% endfor %}
+      </ul>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    <section>
+      <h2>Methodology & Notes</h2>
+      <ul>
+        <li>Forecasts provided by Forecaster Agent (weekly trend and daily pattern).</li>
+        <li>Confidence levels are derived from backtesting metrics and model choice.</li>
+        <li>Keyword/theme series may be omitted when historical occurrence is too sparse.</li>
+      </ul>
+    </section>
+
+    <footer>
+      Report generated by Writer Agent — topic‑agnostic (works for markets, trends, incidents).
+    </footer>
+  </div>
+</body>
+</html>
