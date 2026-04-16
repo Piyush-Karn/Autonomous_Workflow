@@ -2,27 +2,24 @@ import json
 from pathlib import Path
 
 
-def load_forecasts(weekly_path=None, daily_path=None):
-    """
-    Load weekly and daily forecast JSON files from Forecaster Agent.
-    """
-    output = {}
+def load_inputs(weekly_path=None, daily_path=None, analyst_path=None, facts_path=None):
+    out = {}
     if weekly_path:
-        output["weekly"] = _load_json_file(weekly_path)
+        out["weekly"] = _load_json(weekly_path)
     if daily_path:
-        output["daily"] = _load_json_file(daily_path)
+        out["daily"] = _load_json(daily_path)
+    if analyst_path:
+        out["analyst"] = _load_json(analyst_path)
+    if facts_path:
+        out["facts"] = _load_json(facts_path)
+    if not out:
+        raise ValueError("No inputs. Provide at least --weekly or --daily, optionally --analyst and --facts.")
+    return out
 
-    if not output:
-        raise ValueError("No forecast JSONs provided. Pass --weekly and/or --daily.")
-    return output
 
-
-def _load_json_file(path: Path):
-    if not path.exists():
-        raise FileNotFoundError(f"Forecast file not found: {path}")
-    with open(path, "r", encoding="utf-8") as f:
+def _load_json(p: Path):
+    if not p.exists():
+        raise FileNotFoundError(f"File not found: {p}")
+    with open(p, "r", encoding="utf-8") as f:
         data = json.load(f)
-    # Basic schema check
-    if "forecasts" not in data or "meta" not in data:
-        raise ValueError(f"Invalid forecast file structure: {path}")
     return data

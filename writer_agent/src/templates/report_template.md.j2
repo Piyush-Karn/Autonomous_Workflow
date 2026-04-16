@@ -6,9 +6,11 @@
 ## Executive Summary
 {% if data.summary.weekly %}
 - Weekly trend: **{{ data.summary.weekly.direction|capitalize }}** from ~{{ data.summary.weekly.start }} to ~{{ data.summary.weekly.end }} over {{ data.summary.weekly.horizon }} weeks (Confidence: {{ data.summary.weekly.confidence }}).
+  - Interpretation: An {{ "increase" if data.summary.weekly.direction == "upward" else ("decrease" if data.summary.weekly.direction == "downward" else "flat outlook") }} in weekly attention suggests {{ "rising" if data.summary.weekly.direction == "upward" else ("waning" if data.summary.weekly.direction == "downward" else "stable") }} interest and coverage.
 {% endif %}
 {% if data.summary.daily %}
 - Daily pattern: {{ "repeating values " ~ data.summary.daily.unique_values if data.summary.daily.unique_values else "short-term seasonal pattern" }} over {{ data.summary.daily.horizon }} days (Confidence: {{ data.summary.daily.confidence }}).
+  - Interpretation: A repeating weekly shape indicates predictable peaks/troughs, which can be used to time monitoring, posts, and outreach.
 {% endif %}
 {% endif %}
 
@@ -18,10 +20,19 @@
 - Horizon: {{ data.weekly.meta.horizon }} weeks
 - Confidence: {{ data.weekly.main_series.confidence if data.weekly.main_series.confidence else 'N/A' }}
 
+{% if data.charts.weekly_main %}
+![Weekly Article Count]({{ data.charts.weekly_main }})
+{% endif %}
+
 Forecast (article_count):
 {% for point in data.weekly.main_series.forecasts %}
 - {{ point.date }} → {{ "%.2f"|format(point.prediction) }}
 {% endfor %}
+
+### What this means
+- A {{ data.summary.weekly.direction if data.summary.weekly else "—" }} weekly trend implies {{ "increasing" if data.summary.weekly and data.summary.weekly.direction == "upward" else ("decreasing" if data.summary.weekly and data.summary.weekly.direction == "downward" else "stable") }} interest.
+- Use this to plan content, monitoring, and stakeholder updates on a weekly cadence.
+
 {% else %}
 _No weekly forecast data provided._
 {% endif %}
@@ -36,6 +47,10 @@ Forecast (article_count):
 {% for point in data.daily.main_series.forecasts %}
 - {{ point.date }} → {{ "%.2f"|format(point.prediction) }}
 {% endfor %}
+
+### What this means
+- Daily seasonality helps anticipate near-term spikes and lulls. Schedule analyses, announcements, or fraud checks accordingly.
+
 {% else %}
 _No daily forecast data provided._
 {% endif %}
@@ -44,9 +59,22 @@ _No daily forecast data provided._
 ## 3. Top Themes & Keywords
 {% for series in data.weekly.keyword_series %}
 ### {{ series.series }} (Confidence: {{ series.confidence if series.confidence else 'N/A' }})
+
+{% set kw_chart = None %}
+{% for item in data.charts.weekly_keywords %}
+  {% if item.series == series.series %}
+    {% set kw_chart = item.path %}
+  {% endif %}
+{% endfor %}
+{% if kw_chart %}
+![{{ series.series }}]({{ kw_chart }})
+{% endif %}
+
+Forecast:
 {% for point in series.forecasts %}
 - {{ point.date }} → {{ "%.2f"|format(point.prediction) }}
 {% endfor %}
+
 {% endfor %}
 {% else %}
 _No keyword/theme forecast data available._

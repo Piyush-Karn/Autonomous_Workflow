@@ -11,12 +11,13 @@ def plot_series(series_data, title, out_path):
 
     Path(out_path).parent.mkdir(parents=True, exist_ok=True)
 
-    plt.figure(figsize=(8, 4))
-    plt.plot(dates, vals, marker="o")
+    plt.figure(figsize=(8.5, 4.2))
+    plt.plot(dates, vals, marker="o", linewidth=2, color="#60a5fa")
     plt.title(title)
     plt.xlabel("Date")
     plt.ylabel("Predicted Value")
+    plt.grid(True, linestyle="--", alpha=0.3)
     plt.xticks(rotation=45, ha="right")
     plt.tight_layout()
-    plt.savefig(out_path)
+    plt.savefig(out_path, dpi=150)
     plt.close()
