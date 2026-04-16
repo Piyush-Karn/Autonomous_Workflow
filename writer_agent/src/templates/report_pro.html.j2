@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ data.topic }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; color: #222; margin: 0; }
+    .container { max-width: 980px; margin: 0 auto; padding: 24px; }
+    h1,h2,h3 { margin: 12px 0; }
+    .cover { border: 1px solid #ddd; padding: 24px; border-radius: 10px; margin-bottom: 20px; background: #fafafa; }
+    .section { border: 1px solid #eee; border-radius: 10px; padding: 18px; margin-bottom: 16px; }
+    .muted { color: #666; }
+    .code { font-family: monospace; }
+    .table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    .table th, .table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    .img { width: 100%; border: 1px solid #eaeaea; border-radius: 6px; margin: 10px 0; }
+    ul { margin: 8px 0 8px 18px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 1. Cover Page -->
+    <div class="cover">
+      <h1>{{ data.pro.cover.title }}</h1>
+      <p>Date of Report: <span class="code">{{ data.pro.cover.date }}</span></p>
+      <p>Prepared by: {{ data.pro.cover.prepared_by }}</p>
+    </div>
+
+    <!-- 2. Executive Summary -->
+    <div class="section">
+      <h2>Executive Summary</h2>
+      <ul>
+        {% if data.pro.exec.highlights %}
+          {% for k, v in data.pro.exec.highlights.items() %}
+            <li><strong>{{ k }}</strong>: {{ v }}</li>
+          {% endfor %}
+        {% endif %}
+        {% if data.pro.exec.weekly %}
+          <li>Weekly trend: {{ data.pro.exec.weekly.direction|capitalize }} from ~{{ data.pro.exec.weekly.start }} to ~{{ data.pro.exec.weekly.end }} over {{ data.pro.exec.weekly.horizon }} weeks (Confidence: {{ data.pro.exec.weekly.confidence }}).</li>
+        {% endif %}
+        {% if data.pro.exec.daily %}
+          <li>Daily pattern: {{ data.pro.exec.daily.unique_values }} over {{ data.pro.exec.daily.horizon }} days (Confidence: {{ data.pro.exec.daily.confidence }}).</li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <!-- 3. Market Overview (or Topic Overview) -->
+    <div class="section">
+      <h2>Market Overview</h2>
+      {% if data.pro.market_overview.market_size_series %}
+        <img class="img" src="{{ data.charts.extras.market_size_trend }}" alt="Market Size Trend" />
+      {% endif %}
+      {% if data.pro.market_overview.segments %}
+        <h3>Customer Segments</h3>
+        <table class="table">
+          <thead><tr><th>Segment</th><th>Share</th></tr></thead>
+          <tbody>
+            {% for seg in data.pro.market_overview.segments %}
+            <tr><td>{{ seg.segment }}</td><td>{{ seg.share }}%</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% endif %}
+    </div>
+
+    <!-- 4. Competitive Landscape (table) -->
+    {% if data.pro.competitive.competitors %}
+    <div class="section">
+      <h2>Competitive Landscape</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Brand</th><th>Price Range</th><th>Battery Range</th><th>Charging Time</th><th>Market Share</th></tr>
+        </thead>
+        <tbody>
+          {% for c in data.pro.competitive.competitors %}
+          <tr>
+            <td>{{ c.brand }}</td>
+            <td>{{ c.price }}</td>
+            <td>{{ c.range }}</td>
+            <td>{{ c.charge }}</td>
+            <td>{{ c.share }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+
+    <!-- 5. Market Drivers & Trends -->
+    <div class="section">
+      <h2>Market Drivers & Trends</h2>
+      {% if data.pro.drivers_trends.top_keywords %}
+        <p class="muted">Top reported themes/keywords:</p>
+        <ul>
+          {% for kw in data.pro.drivers_trends.top_keywords %}
+            <li>{{ kw[0] }} ({{ kw[1] }})</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="muted">Themes will appear here when available from Analyst Agent.</p>
+      {% endif %}
+    </div>
+
+    <!-- 6. Forecast Analysis -->
+    <div class="section">
+      <h2>Forecast Analysis</h2>
+      {% if data.weekly and data.charts.weekly_main %}
+        <h3>Weekly Projection</h3>
+        <img class="img" src="{{ data.charts.weekly_main }}" alt="Weekly Projection" />
+      {% endif %}
+      {% if data.facts.scam_incidents %}
+        <h3>Risk/Incident Projection</h3>
+        <img class="img" src="{{ data.charts.extras.scam_incidents_trend }}" alt="Scam Incidents Trend" />
+      {% endif %}
+      {% if data.daily and data.daily.main_series and data.daily.main_series.forecasts %}
+        <h3>Daily Pattern (Next {{ data.daily.meta.horizon }} days)</h3>
+        <ul class="flat">
+          {% for p in data.daily.main_series.forecasts %}
+            <li><span class="code">{{ p.date }}</span> → {{ "%.2f"|format(p.prediction) }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    <!-- 7. Recommendations -->
+    <div class="section">
+      <h2>Recommendations</h2>
+      {% if data.pro.recommendations %}
+        <ul>
+          {% for rec in data.pro.recommendations %}
+            <li>{{ rec }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <ul>
+          <li>Align messaging with projected peak weeks to maximize impact.</li>
+          <li>Prioritize segments with rising share; monitor competitor moves quarterly.</li>
+          <li>Strengthen incident monitoring (if scams topic) with anomaly detection.</li>
+        </ul>
+      {% endif %}
+    </div>
+
+    <!-- 8. Appendix -->
+    <div class="section">
+      <h2>Appendix</h2>
+      <p><strong>Research Query:</strong> {{ data.pro.appendix.query }}</p>
+      <h3>References</h3>
+      {% if data.pro.appendix.articles %}
+        <ul>
+          {% for a in data.pro.appendix.articles %}
+            <li><a href="{{ a.url }}">{{ a.title }}</a> — <span class="muted">{{ a.source }}</span> ({{ a.published }})</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="muted">References will appear here once Analyst Agent provides article list.</p>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>

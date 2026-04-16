@@ -1,8 +1,11 @@
-# Core dependencies
 pandas>=2.0.0
 jinja2>=3.1.2
-
 matplotlib>=3.7.2
-
 markdown>=3.4.1
-weasyprint>=60.1  
+# Optional for PDF export (requires Cairo/GTK/Pango on Windows/macOS/Linux)
+weasyprint>=60.1
+# LangChain (for autonomous workflow orchestration and RAG)
+langchain>=0.2.0
+langchain-community>=0.2.0
+faiss-cpu>=1.8.0     # or chromadb>=0.5.0 as a vector store alternative
+tiktoken>=0.7.0
