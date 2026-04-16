@@ -110,7 +110,7 @@ python -m writer_agent.src.cli forecaster_agent/output/forecast_output_...json -
 ```
 
 ## 🏗️ Technical DNA
-- **Core Orchestration**: `LangChain` & `CLI-first` design
+- **Core Orchestration**: `CLI-first` design
 - **Machine Learning**: `RandomForest`, `Prophet`, `XGBoost`
 - **Natural Language**: `Transformer-based embeddings` (optional), `Rule-based NLP`
 - **Visualization**: `Matplotlib` with custom styles
