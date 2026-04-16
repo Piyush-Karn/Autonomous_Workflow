@@ -7,6 +7,10 @@ __pycache__/
 
 # Local data files
 data/
+output/
+writer_agent/output/
 
-# Ignore output JSON files
+# Ignore agent outputs
 researcher_agent/output/
+analyst_agent/output/
+forecaster_agent/output/

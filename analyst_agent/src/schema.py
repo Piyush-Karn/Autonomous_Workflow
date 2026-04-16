@@ -22,6 +22,9 @@ class AnalysisBundle:
     query: str
     articles: List[ArticleAnalysis]
     summary_meta: Dict[str, Any]
+    insights: Optional[str] = None
+    patterns: Optional[Dict[str, Any]] = None
+    topic_map: Optional[Dict[int, str]] = None
 
     def to_dict(self):
         return asdict(self)

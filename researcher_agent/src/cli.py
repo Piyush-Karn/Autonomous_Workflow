@@ -38,7 +38,7 @@ def main():
         json.dumps(bundle.to_dict(), ensure_ascii=False, indent=2),
         encoding="utf-8"
     )
-    print(f"✅ Saved: {args.out}")
+    print(f"Saved: {args.out}")
 
 if __name__ == "__main__":
     main()

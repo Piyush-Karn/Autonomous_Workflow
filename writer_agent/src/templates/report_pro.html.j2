@@ -45,6 +45,33 @@
       </ul>
     </div>
 
+    <!-- 2b. Pattern Analysis & Insights -->
+    {% if data.analysis %}
+    <div class="section">
+      <h2>🔍 Pattern Analysis & Deep Insights</h2>
+      
+      <h3>🧠 Narrative Synthesis</h3>
+      <p style="white-space: pre-line;">{{ data.analysis.insights }}</p>
+
+      <h3>📌 Topic Clusters</h3>
+      <ul>
+      {% for id, name in data.analysis.topic_map.items() %}
+        <li><strong>{{ name }}</strong></li>
+      {% endfor %}
+      </ul>
+
+      <h3>🔗 Entity Co-occurrences</h3>
+      <table class="table">
+        <thead><tr><th>Entity Pair</th><th>Mentions</th></tr></thead>
+        <tbody>
+          {% for co in data.analysis.patterns.co_occurrences[:5] %}
+          <tr><td>{{ co.pair[0]|capitalize }} & {{ co.pair[1]|capitalize }}</td><td>{{ co.count }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+
     <!-- 3. Market Overview (or Topic Overview) -->
     <div class="section">
       <h2>Market Overview</h2>

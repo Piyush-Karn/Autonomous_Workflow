@@ -87,19 +87,22 @@ def generate_report(parsed_data, out_path: Path, skip_charts: bool = False):
     data["charts"] = chart_paths
 
     is_pro = (data.get("mode") == "pro")
-    md_tpl = "report_pro.md.j2" if is_pro else "report_template.md.j2"
-    html_tpl = "report_pro.html.j2" if is_pro else "report_template.html.j2"
+    
+    # Use the unified template for Markdown as it handles pro fields conditionally
+    md_tpl = "report_template.md.j2"
+    # Use pro template for HTML as it has the cinematic layout
+    html_tpl = "report_pro.html.j2" if is_pro else "report_pro.html.j2" # Fallback to pro for now
 
     if suffix == ".md":
         tpl = env.get_template(md_tpl)
         out_path.write_text(tpl.render(data=data), encoding="utf-8")
-        print(f"✅ Report saved: {out_path}")
+        print(f"Report saved: {out_path}")
         return
 
     if suffix == ".html":
         tpl = env.get_template(html_tpl)
         out_path.write_text(tpl.render(data=data), encoding="utf-8")
-        print(f"✅ Report saved: {out_path}")
+        print(f"Report saved: {out_path}")
         return
 
     if suffix == ".pdf":
