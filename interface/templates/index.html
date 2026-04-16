@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Workflow Hub</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glass-container">
+        <header>
+            <div class="logo">
+                <span class="icon">🌌</span>
+                <h1>Autonomous Workflow</h1>
+            </div>
+            <p class="subtitle">Multi-Agent Research Pipeline</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <div class="input-wrapper">
+                    <input type="text" id="topic-input" placeholder="Enter research topic (e.g. Future of Quantum Computing)..." autofocus>
+                    <button id="run-btn">Launch Investigation</button>
+                </div>
+                
+                <div class="options-grid">
+                    <div class="option">
+                        <label for="limit">Depth</label>
+                        <select id="limit">
+                            <option value="5">Standard (5 articles)</option>
+                            <option value="10" selected>Deep (10 articles)</option>
+                            <option value="20">Exhaustive (20 articles)</option>
+                        </select>
+                    </div>
+                    <div class="option">
+                        <label for="mode">Format</label>
+                        <select id="mode">
+                            <option value="brief">Brief Executive</option>
+                            <option value="pro" selected>Pro Narrative</option>
+                        </select>
+                    </div>
+                    <div class="option-toggle">
+                        <input type="checkbox" id="skip-charts">
+                        <label for="skip-charts">Skip Chart Generation</label>
+                    </div>
+                </div>
+            </section>
+
+            <section class="status-section" id="status-container" style="display: none;">
+                <div class="stepper">
+                    <div class="step" id="step-Researcher">
+                        <div class="step-circle">🔍</div>
+                        <span>Research</span>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step" id="step-Analyst">
+                        <div class="step-circle">🧠</div>
+                        <span>Analysis</span>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step" id="step-Forecaster">
+                        <div class="step-circle">📈</div>
+                        <span>Forecast</span>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step" id="step-Writer">
+                        <div class="step-circle">✍️</div>
+                        <span>Reporting</span>
+                    </div>
+                </div>
+
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="terminal-title">Active Log Session</span>
+                    </div>
+                    <div class="terminal-body" id="log-output">
+                        <div class="system-msg">Ready to initialize pipeline...</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="result-section" id="result-container" style="display: none;">
+                <div class="success-banner">
+                    Investigation Complete
+                </div>
+                <div class="action-buttons">
+                    <a href="#" id="download-link" class="btn-download" target="_blank">Download Final Report (.md)</a>
+                    <button id="reset-btn" class="btn-secondary">New Investigation</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/main.js"></script>
+</body>
+</html>

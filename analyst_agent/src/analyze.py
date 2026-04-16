@@ -11,6 +11,8 @@ from .normalizer import normalize_text, normalize_list
 from .validators import validate_article
 from .sentiment import get_sentiment
 from .topics import assign_topics
+from .patterns import detect_co_occurrences, analyze_temporal_trends, find_divergent_entities, calculate_historical_trend
+from .synthesizer import synthesize_insights
 
 from rake_nltk import Rake
 try:
@@ -95,8 +97,8 @@ def analyze_research_file(file_path: Path, keyword_method: str = "rake"):
     total_entities = Counter()
     keyword_counts = Counter()
 
-    # Precompute topic clusters
-    topic_labels = assign_topics(
+    # Precompute topic clusters and names
+    topic_labels, topic_map = assign_topics(
         [normalize_text(a.get("text", "")) for a in articles_data],
         num_clusters=5
     )
@@ -110,8 +112,10 @@ def analyze_research_file(file_path: Path, keyword_method: str = "rake"):
         summary = summarize_text(text)
         entities = extract_entities(text)
 
+        # Keyword extraction
         keyword_extractor = extract_keywords_yake if keyword_method == "yake" else extract_keywords_rake
-        keywords = clean_keywords(keyword_extractor(text, top_k=10))  # cleaned keywords
+        keywords = clean_keywords(keyword_extractor(text, top_k=10))
+        
         # Promote frequent ORG/PRODUCT entities to keyword list
         for label in ("ORG", "PRODUCT"):
             for ent in entities.get(label, []):
@@ -124,25 +128,12 @@ def analyze_research_file(file_path: Path, keyword_method: str = "rake"):
 
         # Source type & weighting
         stype = classify_source_type(art.get("source"))
-        if stype == "government":
-            sw = 1.0
-        elif stype in ("news", "academic"):
-            sw = 0.8
-        elif stype == "market_research":
-            sw = 0.7
-        elif stype == "blog":
-            sw = 0.6
-        else:
-            sw = 0.5
+        sw = {"government": 1.0, "news": 0.8, "academic": 0.8, "market_research": 0.7, "blog": 0.6}.get(stype, 0.5)
 
-        # Aggregate entity stats safely
-        for _, vals in entities.items():
+        # Aggregate entity stats
+        for vals in entities.values():
             if isinstance(vals, list):
                 total_entities.update([str(x) for x in vals if isinstance(x, str)])
-            elif isinstance(vals, dict):
-                total_entities.update([str(x) for x in vals.keys()])
-            elif vals:
-                total_entities.update([str(vals)])
 
         keyword_counts.update(keywords)
 
@@ -163,16 +154,61 @@ def analyze_research_file(file_path: Path, keyword_method: str = "rake"):
             extra=_json_safe(art.get("extra"))
         ))
 
+    # Pattern Analysis
+    patterns = {
+        "co_occurrences": detect_co_occurrences(analyzed_articles),
+        "temporal_trends": analyze_temporal_trends(analyzed_articles),
+        "divergent_entities": find_divergent_entities(analyzed_articles),
+        "historical_trend": calculate_historical_trend(analyzed_articles)
+    }
+
     summary_meta = {
         "total_articles": int(len(analyzed_articles)),
         "avg_sentiment": float(sum(a.sentiment_score for a in analyzed_articles) / max(1, len(analyzed_articles))),
         "top_keywords": [[str(k), int(c)] for k, c in keyword_counts.most_common(10)],
         "top_entities": [[str(k), int(c)] for k, c in total_entities.most_common(10)],
         "articles_by_source_type": {
-            str(k) if k is not None else "unknown": int(v)
-            for k, v in Counter(a.source_type for a in analyzed_articles).items()
+            str(k): int(v) for k, v in Counter(a.source_type for a in analyzed_articles).items()
         }
     }
 
-    logger.info(f"✅ Processed {len(analyzed_articles)} valid articles.")
-    return AnalysisBundle(query=query, articles=analyzed_articles, summary_meta=_json_safe(summary_meta))
+    # Generate Narrative Insights
+    bundle = AnalysisBundle(
+        query=query, 
+        articles=analyzed_articles, 
+        summary_meta=_json_safe(summary_meta),
+        patterns=patterns,
+        topic_map=topic_map
+    )
+    bundle.insights = synthesize_insights(bundle.to_dict(), patterns)
+
+    logger.info(f"✅ Processed {len(analyzed_articles)} articles with enhanced patterns.")
+    return bundle
+
+
+def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Analyst Agent: Enhanced Topic Labeling & Pattern Analysis")
+    parser.add_argument("--input", type=str, required=True, help="Path to researcher JSON output")
+    parser.add_argument("--output", type=str, required=True, help="Path to save analysis JSON")
+    parser.add_argument("--topic", type=str, default="", help="Optional topic name override")
+    parser.add_argument("--yake", action="store_true", help="Use YAKE for keywords (requires yake package)")
+    parser.add_argument("--force-cpu", action="store_true", help="Force CPU for NLTK/Spacy (not used but for CLI compatibility)")
+    
+    args = parser.parse_args()
+    
+    logging.basicConfig(level=logging.INFO)
+    bundle = analyze_research_file(
+        Path(args.input), 
+        keyword_method="yake" if args.yake else "rake"
+    )
+    
+    if args.topic:
+        bundle.query = args.topic
+        
+    Path(args.output).write_text(json.dumps(bundle.to_dict(), indent=2), encoding="utf-8")
+    print(f"Analysis saved to: {args.output}")
+
+
+if __name__ == "__main__":
+    main()

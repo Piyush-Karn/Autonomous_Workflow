@@ -32,9 +32,9 @@ def _build_article(url: str, extracted: dict, status="ok", error=None) -> Articl
     )
 
 def research(query: str, limit: int = 8, take_first_n: int = 6) -> ResearchBundle:
-    print(f"🔍 Searching for '{query}' (limit={limit})...")
+    print(f"Searching for '{query}' (limit={limit})...")
     hits = web_search(query, max_results=limit)
-    print(f"✅ Found {len(hits)} results. Processing first {take_first_n}...")
+    print(f"Found {len(hits)} results. Processing first {take_first_n}...")
 
     articles: List[Article] = []
     for i, hit in enumerate(hits[:take_first_n]):
@@ -42,17 +42,17 @@ def research(query: str, limit: int = 8, take_first_n: int = 6) -> ResearchBundl
         print(f"[{i+1}/{take_first_n}] Processing: {title}")
         html, err = fetch_url(hit["url"])
         if err:
-            print(f" ⚠️ Skipped ({err})")
+            print(f" Skipped ({err})")
             articles.append(_build_article(hit["url"], None, status="skipped", error=err))
             continue
         try:
             extracted = extract_with_newspaper(hit["url"], html)
             if not extracted.get("text"):
-                print(" ℹ️ No text from Newspaper3k, falling back to BeautifulSoup...")
+                print(" No text from Newspaper3k, falling back to BeautifulSoup...")
                 extracted = extract_with_bs4(html, hit["url"])
         except Exception as e:
-            print(f" ⚠️ Error in Newspaper3k ({e}), using BeautifulSoup...")
+            print(f" Error in Newspaper3k ({e}), using BeautifulSoup...")
             extracted = extract_with_bs4(html, hit["url"])
         articles.append(_build_article(hit["url"], extracted))
-        print(f" ✅ Done ({len(extracted.get('text', '').split())} words)")
+        print(f" Done ({len(extracted.get('text', '').split())} words)")
     return ResearchBundle(query, articles)

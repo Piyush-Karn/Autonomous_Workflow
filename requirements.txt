@@ -1,0 +1,44 @@
+# Core Analysis & NLP
+spacy>=3.7.0
+nltk>=3.8.1
+scikit-learn>=1.4.0
+gensim>=4.3.2
+yake
+rake-nltk
+sumy>=0.11.0
+numpy>=1.26.0
+pandas>=2.2.0
+
+# Scrapping & Research
+duckduckgo-search>=6.2.6
+newspaper3k>=0.2.8
+beautifulsoup4>=4.12.3
+requests>=2.32.0
+lxml>=5.2.2
+tqdm>=4.66.4
+
+# Forecasting
+prophet
+lightgbm>=4.2.0
+xgboost>=2.0.0
+statsmodels>=0.14.0
+pmdarima>=2.0.0
+holidays>=0.37
+
+# Writing & Reporting
+jinja2>=3.1.2
+matplotlib>=3.8.0
+weasyprint>=60.1
+markdown>=3.4.1
+
+# AI Orchestration & RAG
+langchain>=0.2.10
+langchain-core>=0.2.26
+langchain-community>=0.2.9
+faiss-cpu>=1.8.0
+tiktoken>=0.7.0
+
+# Web Interface
+fastapi
+uvicorn
+python-multipart

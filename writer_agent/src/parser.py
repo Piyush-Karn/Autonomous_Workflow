@@ -12,7 +12,7 @@ def parse_all(raw, topic_override=None, mode="brief"):
         "weekly": None,
         "daily": None,
         "summary": None,
-        "analyst": None,
+        "analysis": None,
         "facts": None,
         "pro": None,
     }
@@ -25,7 +25,7 @@ def parse_all(raw, topic_override=None, mode="brief"):
     base["summary"] = _build_executive_summary(base)
 
     if "analyst" in raw:
-        base["analyst"] = _parse_analyst(raw["analyst"])
+        base["analysis"] = _parse_analyst(raw["analyst"])
     if "facts" in raw:
         base["facts"] = _parse_facts(raw["facts"])
 
@@ -58,6 +58,9 @@ def _parse_analyst(a):
         "summary_meta": a.get("summary_meta", {}),
         "articles": a.get("articles", []),
         "query": a.get("query", ""),
+        "insights": a.get("insights"),
+        "patterns": a.get("patterns"),
+        "topic_map": a.get("topic_map"),
     }
 
 
