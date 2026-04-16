@@ -17,14 +17,18 @@
 ## 🎯 Vision
 **Autonomous Workflow** is a state-of-the-art suite of AI agents designed to automate the heavy lifting of market research, technical analysis, and strategic forecasting. Whether you need to track emerging trends or synthesize large volumes of web data, this pipeline delivers high-fidelity reports with zero manual intervention.
 
-## 🚀 The Web Dashboard
-The system now features a **Premium Web Interface** that allows you to run the entire pipeline with a single click. No more complex CLI commands—just enter your topic and watch the agents work in real-time.
+## ⚡ Quick Start
 
-**To Launch the Dashbord:**
+Get the system up and running in seconds:
+
 ```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Launch the Web Dashboard
 python -m interface.server
 ```
-Visit **[http://localhost:8000](http://localhost:8000)** to start your investigation.
+Visit **[http://localhost:8000](http://localhost:8000)** to start your autonomous research.
 
 ## 🤖 The Agent Ecosystem
 
